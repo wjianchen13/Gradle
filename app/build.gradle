@@ -3,6 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
+
+    // 默认配置,所有 productFlavors 都会继承 defaultConfig 中配置的属性
     defaultConfig {
         applicationId "com.cold.gradle"
         minSdkVersion 15
@@ -11,12 +13,72 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    flavorDimensions "company", "version"
+
+    signingConfigs {
+        test1 {
+            storeFile file('../jks/test1.jks')
+            storePassword "123456"
+            keyAlias "key0"
+            keyPassword "123456"
+        }
+        test2 {
+            storeFile file('../jks/test2.jks')
+            storePassword "123456"
+            keyAlias "key0"
+            keyPassword "123456"
+        }
+    }
+
     buildTypes {
+        other {
+            debuggable true
+            jniDebuggable true
+            zipAlignEnabled true
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+        }
+
+        debug {
+            debuggable true
+            jniDebuggable true
+            zipAlignEnabled true
+            minifyEnabled false
+            shrinkResources false
+            signingConfig null // 配置debug模式下的签名，在productFlavors里面配置
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
     }
+
+    productFlavors {
+        c_vivo {
+            dimension "company"
+        }
+
+        v_test1 {
+            signingConfig signingConfigs.test1
+            applicationId "com.cold.test1"
+            dimension "version"
+            manifestPlaceholders = [NAME : "test1"]
+        }
+
+        v_test2 {
+            signingConfig signingConfigs.test2
+            applicationId "com.cold.test2"
+            dimension "version"
+            manifestPlaceholders = [NAME : "test2"]
+        }
+    }
+    
+    
 }
 
 dependencies {
