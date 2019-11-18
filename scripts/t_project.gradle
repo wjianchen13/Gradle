@@ -1,4 +1,11 @@
 
+ext {
+    log = this.&log
+}
+
+def log(String log) {
+    println "=============================> " + log
+}
 
 this.getProjects()
 def getProjects() {

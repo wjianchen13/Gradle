@@ -1,3 +1,4 @@
+log "module1 build.gradle start"
 apply plugin: 'com.android.library'
 
 android {
@@ -32,3 +33,5 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
+
+log "module1 build.gradle end"
