@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -58,6 +60,10 @@ android {
 
     }
 
+    applicationVariants.all { variant ->
+        println("==============================> variant name: " + variant.flavorName)
+    }
+    
     productFlavors {
         c_vivo {
             dimension "company"
@@ -68,6 +74,7 @@ android {
             applicationId "com.cold.test1"
             dimension "version"
             manifestPlaceholders = [NAME : "test1"]
+            buildConfigField "boolean", "LOG_DEBUG", "true" // 是否输出LOG信息
         }
 
         v_test2 {
@@ -75,7 +82,16 @@ android {
             applicationId "com.cold.test2"
             dimension "version"
             manifestPlaceholders = [NAME : "test2"]
+            buildConfigField "boolean", "LOG_DEBUG", "false" // 是否输出LOG信息
         }
+
+
+        // 根据官方文档可以知道开发者可以通过 android.applicationVariants.all 获取到当前所有的 apk 变体，
+        // 该变体的类型为 ApplicationVariant，其父类 BaseVariantOutput 中含 name 字段，该字段实际上就是
+        // 当前变体的名字，那么其实只需要判断该 name 字段是否包含 release 关键字即可。
+//        applicationVariants.all { variant ->
+//            println("==============================> variant name: " + variant.flavorName)
+//        }
     }
     
     

@@ -1,0 +1,15 @@
+
+
+this.getProjects()
+def getProjects() {
+    println '--------------------------'
+    println 'Root Project'
+    println '--------------------------'
+    this.getAllprojects().eachWithIndex { Project project, int index ->
+        if(index == 0) {
+            println "Root project:'${project.name}'"
+        } else {
+            println "+---- project:'${project.name}'"
+        }
+    }
+}

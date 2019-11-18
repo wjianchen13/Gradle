@@ -6,11 +6,20 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tv_info"
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Hello World!" />
+        android:textAllCaps="false"
+        android:text="meta-data" 
+        android:onClick="onMetaData"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAllCaps="false"
+        android:text="BuildConfig"
+        android:onClick="onBuildConfig" />
     
 </LinearLayout>
