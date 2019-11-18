@@ -33,6 +33,17 @@ android {
         }
     }
 
+    sourceSets {
+        v_test1 {
+            java.srcDirs += ['../flavors/v_test1/src'] // 指定源码目录
+            res.srcDirs += ['../flavors/v_test1/res'] //资源目录
+        }
+        v_test2 {
+            java.srcDirs += ['../flavors/v_test2/src'] // 指定源码目录
+            res.srcDirs += ['../flavors/v_test2/res'] //资源目录
+        }
+    }
+
     buildTypes {
         other {
             debuggable true
