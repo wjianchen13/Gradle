@@ -1,8 +1,7 @@
 log "app build.gradle start"
 
 apply plugin: 'com.android.application'
-
-
+apply plugin: 'com.cold.plugin'
 
 android {
     compileSdkVersion 29
@@ -74,7 +73,7 @@ android {
     }
 
     applicationVariants.all { variant ->
-        println("==============================> variant name: " + variant.flavorName)
+        log ("variant name: " + variant.flavorName)
     }
     
     productFlavors {

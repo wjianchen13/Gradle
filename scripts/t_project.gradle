@@ -1,13 +1,16 @@
 
 ext {
+    isLog = false
     log = this.&log
 }
 
 def log(String log) {
-    println "=============================> " + log
+    if(isLog)
+        println "=============================> " + log
 }
 
-this.getProjects()
+//this.getProjects()
+
 def getProjects() {
     println '--------------------------'
     println 'Root Project'
