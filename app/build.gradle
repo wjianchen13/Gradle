@@ -119,3 +119,11 @@ dependencies {
 }
 
 log "app build.gradle end"
+
+/***************************** 获取扩展参数 **************************************/
+person {
+    name "gg"
+    num "12345"
+    sex "man"
+}
+
