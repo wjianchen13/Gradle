@@ -1,7 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 apply from : file('scripts/t_project.gradle')
 apply from : file('scripts/t_task.gradle')
-apply from : file('scripts/t_extension.gradle')
+//apply from : file('scripts/t_extension.gradle')
+//apply from : file('scripts/t_nameddomainobjectcontainer.gradle')
 
 buildscript {
     repositories {
@@ -28,3 +29,47 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+/*************************************** Project 监听  *******************************************/
+////对子模块进行配置
+//subprojects { sub ->
+//    sub.beforeEvaluate { proj ->
+//        println "子项目 ${proj.getName()} beforeEvaluate回调..."
+//    }
+//}
+//
+//println "根项目配置开始---"
+//
+//task rootTest {
+//    println "根项目里任务配置---"
+//    doLast {
+//        println "执行根项目任务..."
+//    }
+//}
+//
+//println "根项目配置结束---"
+
+/*************************************** Task执行图  *******************************************/
+TaskExecutionGraph taskGraph = gradle.getTaskGraph()
+taskGraph.whenReady {
+    println "=============================> task whenReady"
+}
+
+taskGraph.beforeTask { Task task ->
+    println "=============================> 任务名称：${task.name} beforeTask"
+}
+
+taskGraph.afterTask { Task task ->
+    println "=============================> 任务名称：${task.name} afterTask"
+}
+
+
+
+
+
+
+
+
+
+
+
