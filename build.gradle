@@ -1,6 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 apply from : file('scripts/t_project.gradle')
-apply from : file('scripts/t_task.gradle')
+//apply from : file('scripts/t_task.gradle')
 //apply from : file('scripts/t_extension.gradle')
 //apply from : file('scripts/t_nameddomainobjectcontainer.gradle')
 
@@ -50,19 +50,19 @@ task clean(type: Delete) {
 //println "根项目配置结束---"
 
 /*************************************** Task执行图  *******************************************/
-TaskExecutionGraph taskGraph = gradle.getTaskGraph()
-taskGraph.whenReady {
-    println "=============================> task whenReady"
-}
-
-taskGraph.beforeTask { Task task ->
-    println "=============================> 任务名称：${task.name} beforeTask"
-}
-
-taskGraph.afterTask { Task task ->
-    println "=============================> 任务名称：${task.name} afterTask"
-}
-
+//TaskExecutionGraph taskGraph = gradle.getTaskGraph()
+//taskGraph.whenReady {
+//    println "=============================> task whenReady"
+//}
+//
+//taskGraph.beforeTask { Task task ->
+//    println "=============================> 任务名称：${task.name} beforeTask"
+//}
+//
+//taskGraph.afterTask { Task task ->
+//    println "=============================> 任务名称：${task.name} afterTask"
+//}
+//
 
 
 

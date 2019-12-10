@@ -1,5 +1,6 @@
 package com.cold.plugin
 
+import com.android.build.gradle.AppExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -20,6 +21,9 @@ class MyPlugin implements Plugin<Project> {
             }
         }
 
+        // 注册transform
+        project.extensions.findByType(AppExtension.class)
+                .registerTransform(new MyTransform(project))
     }
 
     

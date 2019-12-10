@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.cold.annotation.Cal;
 import com.cold.gradle.interfaces.IFlavors;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,10 +34,14 @@ public class MainActivity extends AppCompatActivity {
         IFlavors flavors = new MyFlavors();
         tvFlavorName.setText("Flavors Name: " + flavors.getFavorName());
     }
-    
+    @Cal
     public void onGetInfo(View view) {
         startActivity(new Intent(this, InfoActivity.class));
     }
     
-    
+    // 测试transform asm插入代码
+//    @Cal
+    public void test() {
+        
+    }
 }
