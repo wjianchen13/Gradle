@@ -4,7 +4,7 @@ class Log {
 
     private static boolean isLog = true;
 
-    private static void println(String str) {
+    public static void println(String str) {
         if(isLog) {
             System.out.println("========================> " + str);
         }

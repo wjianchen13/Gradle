@@ -17,6 +17,12 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    // 偶尔，个别情况下会报com.android.builder.dexing.DexArchiveBuilderException,没作用
+//    compileOptions {
+//        sourceCompatibility 1.8
+//        targetCompatibility 1.8
+//    }
+
     flavorDimensions "company", "version"
 
     signingConfigs {

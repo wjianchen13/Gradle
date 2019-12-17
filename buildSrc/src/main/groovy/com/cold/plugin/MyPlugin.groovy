@@ -1,6 +1,7 @@
 package com.cold.plugin
 
 import com.android.build.gradle.AppExtension
+import com.cold.asm.learn.LearnTransform
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -23,7 +24,8 @@ class MyPlugin implements Plugin<Project> {
 
         // 注册transform
         project.extensions.findByType(AppExtension.class)
-                .registerTransform(new MyTransform(project))
+                .registerTransform(new LearnTransform(project))
+//        project.android.registerTransform(new LearnTransform(mProject))
     }
 
     
