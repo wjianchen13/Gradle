@@ -67,7 +67,9 @@ class LearnTransform extends Transform {
 //        LearnUtils.removeMethod()
 //        LearnUtils.addField()
 //        LearnUtils.testTraceClassVisitor()
-        LearnUtils.testCheckClassAdapter()        
+//        LearnUtils.testCheckClassAdapter()     
+        
+        
         
         def startTime = System.currentTimeMillis()
 

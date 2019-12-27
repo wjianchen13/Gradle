@@ -3,6 +3,7 @@ package com.cold.gradle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         tvFlavorName = findViewById(R.id.tv_flavor_name);
         setImage();
         setFlavorsName();
+
     }
     
     private void setImage() {
