@@ -2,11 +2,15 @@ package com.cold.asm.learn
 
 import com.android.build.api.transform.*
 import com.android.build.gradle.internal.pipeline.TransformManager
+import com.android.tools.r8.org.objectweb.asm.tree.ClassNode
 import com.cold.utils.Log
 import org.apache.commons.codec.digest.DigestUtils
 import org.apache.commons.io.FileUtils
 import org.gradle.api.Project
 
+/**
+ * 
+ */
 class LearnTransform extends Transform {
 
     Project project
@@ -59,7 +63,8 @@ class LearnTransform extends Transform {
                    TransformOutputProvider outputProvider, boolean isIncremental)
             throws IOException, TransformException, InterruptedException {
         println "transform start ..."
-
+        ClassNode node;
+        
 //        LearnUtils.readClass()
 //        LearnUtils.createClass()
 //        LearnUtils.changeClass()
@@ -68,7 +73,6 @@ class LearnTransform extends Transform {
 //        LearnUtils.addField()
 //        LearnUtils.testTraceClassVisitor()
 //        LearnUtils.testCheckClassAdapter()     
-        
         
         
         def startTime = System.currentTimeMillis()

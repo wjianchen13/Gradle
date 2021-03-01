@@ -25,10 +25,14 @@ class MyPlugin implements Plugin<Project> {
         // 注册transform
         project.extensions.findByType(AppExtension.class)
                 .registerTransform(new LearnTransform(project))
-//        project.android.registerTransform(new LearnTransform(mProject))
+//        project.android.registerTransform(new LearnTransform(this))
     }
 
     
     
 }
+
+
+
+
 

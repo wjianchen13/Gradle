@@ -13,6 +13,9 @@ import static org.objectweb.asm.Opcodes.ACC_INTERFACE
 import static org.objectweb.asm.Opcodes.ACC_FINAL
 import static org.objectweb.asm.Opcodes.ACC_STATIC
 
+/**
+ * 这里参考的是 ASM4使用指南.pdf
+ */
 class LearnUtils{
 
     private static String path1 = "F:\\mygithub\\Gradle\\app\\build\\intermediates\\javac\\c_vivoV_test1Debug\\compileC_vivoV_test1DebugJavaWithJavac\\classes\\";
