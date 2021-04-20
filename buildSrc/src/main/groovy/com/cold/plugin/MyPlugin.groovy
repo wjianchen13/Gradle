@@ -7,9 +7,9 @@ import org.gradle.api.Project
 
 class MyPlugin implements Plugin<Project> {
     void apply(Project project) {
-        System.out.println("========================")
-        System.out.println("这是个插件!")
-        System.out.println("========================")
+        System.out.println("========================================================================")
+        System.out.println("======                        这是个插件!                      =========")
+        System.out.println("========================================================================")
 
 //        project.extensions.create('person', Person)
         project.getExtensions().create('person', Person)
@@ -23,8 +23,8 @@ class MyPlugin implements Plugin<Project> {
         }
 
         // 注册transform
-        project.extensions.findByType(AppExtension.class)
-                .registerTransform(new LearnTransform(project))
+//        project.extensions.findByType(AppExtension.class)
+//                .registerTransform(new LearnTransform(project))
 //        project.android.registerTransform(new LearnTransform(this))
     }
 

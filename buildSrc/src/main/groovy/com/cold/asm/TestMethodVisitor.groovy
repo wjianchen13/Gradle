@@ -6,6 +6,7 @@ import org.objectweb.asm.Opcodes
 
 /**
  * MethodVisitor使用测试
+ * 修改 app 的AsmTest类
  */
 public class TestMethodVisitor extends MethodVisitor implements Opcodes {
     public TestMethodVisitor(MethodVisitor mv) {

@@ -12,6 +12,8 @@ import com.cold.utils.Log
 
 /**
  * 使用ClassVisitor生成和改变字节码
+ * 生成一个方法，可以统计时间
+ * https://blog.csdn.net/github_32521685/article/details/89952889
  */
 class CalClassVisitor extends ClassVisitor {
 

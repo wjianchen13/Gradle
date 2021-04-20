@@ -9,6 +9,7 @@ android {
 
     // 默认配置,所有 productFlavors 都会继承 defaultConfig 中配置的属性
     defaultConfig {
+        println "==========================> defaultConfig"
         applicationId "com.cold.gradle"
         minSdkVersion 15
         targetSdkVersion 29
@@ -17,15 +18,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    // 偶尔，个别情况下会报com.android.builder.dexing.DexArchiveBuilderException,没作用
-//    compileOptions {
-//        sourceCompatibility 1.8
-//        targetCompatibility 1.8
-//    }
-
-    flavorDimensions "company", "version"
-
     signingConfigs {
+        println "==========================> signingConfigs"
         test1 {
             storeFile file('../jks/test1.jks')
             storePassword "123456"
@@ -40,7 +34,16 @@ android {
         }
     }
 
+    // 偶尔，个别情况下会报com.android.builder.dexing.DexArchiveBuilderException,没作用
+//    compileOptions {
+//        sourceCompatibility 1.8
+//        targetCompatibility 1.8
+//    }
+
+    flavorDimensions "company", "version"
+
     sourceSets {
+        println "==========================> sourceSets"
         v_test1 {
             java.srcDirs += ['../flavors/v_test1/src'] // 指定源码目录
             res.srcDirs += ['../flavors/v_test1/res'] //资源目录
@@ -49,9 +52,55 @@ android {
             java.srcDirs += ['../flavors/v_test2/src'] // 指定源码目录
             res.srcDirs += ['../flavors/v_test2/res'] //资源目录
         }
+
+//        sourceSets.all { sourceSet ->
+//            println("===============================================> ${sourceSet.name}的Java文件是 ${sourceSet.java.srcDirs}")
+////            println("===============================================> ${sourceSet.name}的res文件是 ${sourceSet.res.srcDirs}")
+//        }
+        
+        applicationVariants.all { variant ->
+            println("==============================> sourceSets name: " + variant.flavorName + variant.getBuildType().name)
+        }
+    }
+    
+    productFlavors {
+        println "==========================> productFlavors"
+        c_vivo {
+            dimension "company"
+        }
+
+        v_test1 {
+            signingConfig signingConfigs.test1
+            applicationId "com.cold.test1"
+            dimension "version"
+            manifestPlaceholders = [NAME : "test1"]
+            buildConfigField "boolean", "LOG_DEBUG", "true" // 是否输出LOG信息
+        }
+
+        v_test2 {
+            signingConfig signingConfigs.test2
+            applicationId "com.cold.test2"
+            dimension "version"
+            manifestPlaceholders = [NAME : "test2"]
+            buildConfigField "boolean", "LOG_DEBUG", "false" // 是否输出LOG信息
+        }
+
+        productFlavors.all { flavor ->
+            println("========================================> productFlavors name: " + flavor.name)
+        }
+
+        // 对应源码是这个ApplicationVariant
+        // 根据官方文档可以知道开发者可以通过 android.applicationVariants.all 获取到当前所有的 apk 变体，
+        // 该变体的类型为 ApplicationVariant，其父类 BaseVariantOutput 中含 name 字段，该字段实际上就是
+        // 当前变体的名字，那么其实只需要判断该 name 字段是否包含 release 关键字即可。
+        // 相当于在这里注册了一个监听，当执行到一个变体时，回调这个方法，在buildTypes和sourceSets加入效果一样，谁先加入先执行谁
+        applicationVariants.all { variant ->
+            println("==============================> productFlavors name: " + variant.flavorName + variant.getBuildType().name)
+        }
     }
 
     buildTypes {
+        println "==========================> buildTypes"
         other {
             debuggable true
             jniDebuggable true
@@ -76,46 +125,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
-    }
-
-    applicationVariants.all { variant ->
-        log ("variant name: " + variant.flavorName)
-    }
-    
-    productFlavors {
-        c_vivo {
-            dimension "company"
-        }
-
-        v_test1 {
-            signingConfig signingConfigs.test1
-            applicationId "com.cold.test1"
-            dimension "version"
-            manifestPlaceholders = [NAME : "test1"]
-            buildConfigField "boolean", "LOG_DEBUG", "true" // 是否输出LOG信息
-        }
-
-        v_test2 {
-            signingConfig signingConfigs.test2
-            applicationId "com.cold.test2"
-            dimension "version"
-            manifestPlaceholders = [NAME : "test2"]
-            buildConfigField "boolean", "LOG_DEBUG", "false" // 是否输出LOG信息
+        buildTypes.all { flavor ->
+            println("===============================================> buildTypes name: " + flavor.name)
         }
 
 
-        // 根据官方文档可以知道开发者可以通过 android.applicationVariants.all 获取到当前所有的 apk 变体，
-        // 该变体的类型为 ApplicationVariant，其父类 BaseVariantOutput 中含 name 字段，该字段实际上就是
-        // 当前变体的名字，那么其实只需要判断该 name 字段是否包含 release 关键字即可。
-//        applicationVariants.all { variant ->
-//            println("==============================> variant name: " + variant.flavorName)
-//        }
+        applicationVariants.all { variant ->
+            println("==============================> buildTypes name: " + variant.flavorName + variant.getBuildType().name)
+        }
+
     }
     
     
 }
 
 dependencies {
+    println "==========================> dependencies"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
