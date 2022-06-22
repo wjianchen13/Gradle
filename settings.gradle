@@ -27,5 +27,5 @@
 //}
 
 println "=============================> " + "settings.gradle start"
-include ':module1', ':app', ':module2', ':buildSrc', ':common'
+include ':module1', ':app', ':module2', ':common'
 println "=============================> " + "settings.gradle end"
